@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Expense Tracker</h2>
+      <ul>
+        <li><strong>Total Balance:</strong> <span id="balance">₹0.00</span></li>
+        <li>
+          <strong>Filter By Month</strong>
+          <select id="month-filter" onchange="filterExpenseByMonth()"></select>
+        </li>
+        <li><button onclick="downloadPDF()">Download Report</button></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section class="form-section">
+        <h3>Add New Expense</h3>
+        <div class="form">
+          <input type="text" id="description" placeholder="Description"/>
+          <input type="number" id="amount" placeholder="Amount (₹)"/>
+          <select id="category">
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Bills">Bills</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="date" id="date"/>
+          <button onclick="addExpense()">Add Expense</button>
+        </div>
+      </section>
+
+      <section class="expense-section">
+        <h3>Expense List</h3>
+        <ul id="expense-list"></ul>
+      </section>
+
+      <section class="chart-section">
+        <h3>Expense Overview</h3>
+        <canvas id="expense-chart" ></canvas>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
